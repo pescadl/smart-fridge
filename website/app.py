@@ -54,6 +54,55 @@ def get_ing_list():
     disconnect_db(con)
     return ingList
 
+def get_grocery_list():
+    con = connect_db()
+    cur = con.cursor()
+
+    cur.execute('DELETE FROM LIST')
+
+    ingList = get_ing_list()
+    
+    for (a,b,c,d) in ingList:
+        cur.execute('SELECT QUANTITY FROM FRIDGE WHERE FOOD == ?', (d,))
+        fridge = cur.fetchall()
+        if fridge:
+            if fridge[0][0] < c:
+                add_grocery_list(c-fridge[0], d, cur)
+        else:
+            add_grocery_list(c, d, cur)
+
+    cur.execute('SELECT * FROM LIST')
+    groceryList = cur.fetchall()
+
+    disconnect_db(con)
+    return groceryList
+
+def add_grocery_list(quantity, name, cur):
+    cur.execute('SELECT ID FROM LIST WHERE FOOD == ?', (name,))
+    foodID = cur.fetchone()
+    if foodID is None:
+        cur.execute('INSERT INTO LIST (QUANTITY, FOOD) VALUES (?,?)', (quantity, name))
+    else:
+        cur.execute('SELECT QUANTITY FROM LIST WHERE ID == ?', (foodID))
+        q = cur.fetchone()
+        tup = (quantity+q[0])
+        cur.execute('UPDATE LIST SET QUANTITY = ? WHERE ID == ?', (tup, foodID[0]))
+
+#def scan_fridge():
+
+#def insert_food_into_fridge(foodName):
+#    con = connect_db()
+#    cur = con.cursor()
+#
+#    cur.execute('SELECT ID FROM FRIDGE WHERE Food = ?)', (foodName))
+#    foodID = cur.fetchone()
+#    if foodID is None:
+#        cur.execute('INSERT INTO FRIDGE (ID, Quantity, Food) VALUES (?,?)', (1, foodName))
+#    else:
+#        cur.execute('UPDATE FRDIGE SET Quantity = (SELECT Quantity FROM FRIDGE WHERE ID = ?)+1', (foodID))
+#
+#    disconnect_db(con)
+ 
 @app.route('/make_recipe', methods = ['POST', 'GET'])
 def make_recipe():
     if request.method == 'POST':
@@ -83,31 +132,11 @@ def make_recipe():
         #for num in range(1, numIng):
 
 
-#def get_recipes():
-
-#def get_grocery_list():
-
-#def scan_fridge():
-
-#def insert_food_into_fridge(foodName):
-#    con = connect_db()
-#    cur = con.cursor()
-#
-#    cur.execute('SELECT ID FROM FRIDGE WHERE Food = ?)', (foodName))
-#    foodID = cur.fetchone()
-#    if foodID is None:
-#        cur.execute('INSERT INTO FRIDGE (ID, Quantity, Food) VALUES (?,?)', (1, foodName))
-#    else:
-#        cur.execute('UPDATE FRDIGE SET Quantity = (SELECT Quantity FROM FRIDGE WHERE ID = ?)+1', (foodID))
-#
-#    disconnect_db(con)
- 
-
 # render the html files
 @app.route('/')
 @app.route('/list')
 def list():
-    return render_template('list.html')
+    return render_template('list.html', groceryList=get_grocery_list())
 
 @app.route('/fridge')
 def fridge():
