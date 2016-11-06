@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/cpp-headless.dir/cpp-headless.cpp.o  -o cpp-headless -rdynamic 

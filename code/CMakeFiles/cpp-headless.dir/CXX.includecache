@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lapras/smart-fridge/code/cpp-headless.cpp
+librealsense/rs.hpp
+-
+cstdio
+-
+stdint.h
+-
+vector
+-
+map
+-
+limits
+-
+iostream
+-
+third_party/stb_image_write.h
+/home/lapras/smart-fridge/code/third_party/stb_image_write.h
+
+/home/lapras/smart-fridge/code/third_party/stb_image_write.h
+stdio.h
+-
+stdarg.h
+-
+stdlib.h
+-
+string.h
+-
+math.h
+-
+assert.h
+-
+

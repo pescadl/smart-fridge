@@ -1,0 +1,21 @@
+{
+  "images": [
+    {
+      "image": "cpp-headless-output-COLOR.png", 
+      "classifiers": [
+        {
+          "classes": [
+            {
+              "score": 0.973403, 
+              "class": "apple"
+            }
+          ], 
+          "classifier_id": "default", 
+          "name": "default"
+        }
+      ]
+    }
+  ], 
+  "custom_classes": 0, 
+  "images_processed": 1
+}

@@ -1,0 +1,3 @@
+/home/lapras/smart-fridge/code/CMakeFiles/edit_cache.dir
+/home/lapras/smart-fridge/code/CMakeFiles/rebuild_cache.dir
+/home/lapras/smart-fridge/code/CMakeFiles/pic.dir
