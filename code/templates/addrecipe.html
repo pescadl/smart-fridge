@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		</head>
+	<body>
+		<h1>Smart Fridge</h1>
+		<nav>
+			<a href="fridge">Fridge</a>
+			<a href="list">Grocery List</a>
+			<a href="recipe">Recipes</a>
+			<a href="scan">Scan</a>
+		</nav>
+
+		<h2>Create a New Recipe</h2>
+		
+		<form action="{{ url_for('make_recipe') }}" method='post'>
+			Recipe: <input type="text" name="recipe_name">
+			Number of Ingredients: <input type="number" name="numIng">
+			<div class="listOfIngredients">
+				Quantity: <input type="number" name="q1">
+				Ingredient: <input type="text" name="i1"><br>
+				Quantity: <input type="number" name="q2">
+				Ingredient: <input type="text" name="i2"><br>
+				Quantity: <input type="number" name="q3">
+				Ingredient: <input type="text" name="i3"><br>
+				Quantity: <input type="number" name="q4">
+				Ingredient: <input type="text" name="i4"><br>
+				Quantity: <input type="number" name="q5">
+				Ingredient: <input type="text" name="i5"><br>
+				Quantity: <input type="number" name="q6">
+				Ingredient: <input type="text" name="i6"><br>
+				Quantity: <input type="number" name="q7">
+				Ingredient: <input type="text" name="i7"><br>
+				Quantity: <input type="number" name="q8">
+				Ingredient: <input type="text" name="i8"><br>
+				Quantity: <input type="number" name="q9">
+				Ingredient: <input type="text" name="i9"><br>
+			</div>
+			
+			<button type="submit" value="add_recipe_button">Submit</button>
+		<form>
+
+	</body>
+</html>
+

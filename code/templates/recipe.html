@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- CSS will go here -->
+	</head>
+	<body>
+		<h1>Smart Fridge</h1>
+		<nav>
+			<a href="fridge">Fridge</a>
+			<a href="list">Grocery List</a>
+			<a href="recipe">Recipes</a>
+			<a href="scan">Scan</a>
+		</nav>
+
+		<h2>Recipes</h2>
+		
+		{% for (a,b) in recipeNameList %}
+		<table>
+			<tr>
+				{{b}}
+			</tr>
+			<tr>
+				<th>Quantity</th>
+				<th>Ingredient</th>
+			</tr>
+
+			{% for (c,d,e,f) in ingList %}
+			<tr>
+				{% if a == d %}
+				<td>{{e}}</td>
+				<td>{{f}}</td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+		{% endfor %}
+
+		<form method='post'>
+			<button type='submit' value='add_new_recipe'>Create a New Recipe</a>
+		</form>
+	</body>
+</html>
+

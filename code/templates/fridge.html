@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Scripting will go here -->
+	</head>
+	<body>
+		<h1>Smart Fridge</h1>
+		<nav>
+			<a href="fridge">Fridge</a>
+			<a href="list">Grocery List</a>
+			<a href="recipe">Recipes</a>
+			<a href="scan">Scan</a>
+		</nav>
+
+		<h2>Fridge</h2>
+		<table>
+			<tr>
+				<th>Quantity</th>
+				<th>Food</th>
+			</tr>
+			{% for (a,b,c) in fridgeList %}
+			<tr>
+				<td>{{b}}</td>
+				<td>{{c}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
