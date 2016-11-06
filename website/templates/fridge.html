@@ -12,16 +12,18 @@
 			<a href="scan">Scan</a>
 		</nav>
 
-		<h2>Grocery List</h2>
+		<h2>Fridge</h2>
 		<table>
 			<tr>
-				<td>Quantity</td>
-				<td>Food</td>
-				<td>Expire</td>
+				<th>Quantity</th>
+				<th>Food</th>
 			</tr>
+			{% for (a,b,c) in fridgeList %}
 			<tr>
-				<!-- Javascript will go here -->
+				<td>{{b}}</td>
+				<td>{{c}}</td>
 			</tr>
+			{% endfor %}
 		</table>
 	</body>
 </html>
