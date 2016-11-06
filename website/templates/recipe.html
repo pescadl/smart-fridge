@@ -13,8 +13,30 @@
 		</nav>
 
 		<h2>Recipes</h2>
-		<form>
-			<input type="submit" value="Create Recipe">
+		
+		{% for (a,b) in recipeNameList %}
+		<table>
+			<tr>
+				{{b}}
+			</tr>
+			<tr>
+				<th>Quantity</th>
+				<th>Ingredient</th>
+			</tr>
+
+			{% for (c,d,e,f) in ingList %}
+			<tr>
+				{% if a == d %}
+				<td>{{e}}</td>
+				<td>{{f}}</td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+		{% endfor %}
+
+		<form method='post'>
+			<button type='submit' value='add_new_recipe'>Create a New Recipe</a>
 		</form>
 	</body>
 </html>
